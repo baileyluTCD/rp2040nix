@@ -7,12 +7,14 @@
   pkg-config,
   mkNativeApp,
   mkRp2040App,
+  rp2040nix-cmakeLists,
 }: {
   name,
   src,
   picoSys ? "rp2040",
   cmakeFlags ? [],
   doCheck ? false,
+  cmakeLists ? rp2040nix-cmakeLists,
   ...
 } @ args: let
   commonBuildInputs = [
@@ -23,6 +25,10 @@
     pico-sdk
     pico-extras
   ];
+
+  patchPhase = ''
+    cp ${cmakeLists} ./CMakeLists.txt
+  '';
 
   commonCmakeFlags =
     [
@@ -38,7 +44,7 @@
   '';
 
   checkPhase = ''
-    ./morse-code
+    ./rp2040nix-app
   '';
 in
   (

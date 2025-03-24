@@ -40,7 +40,7 @@ stdenv.mkDerivation {
     or ''
       mkdir -p $out/bin
 
-      cp ./morse-code $out/bin/$name
+      cp ./rp2040nix-app $out/bin/$name
     '';
 
   meta.mainProgram = name;
