@@ -17,6 +17,7 @@
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {inherit system;};
 
+      # Access the rp2040nix packages bundle
       rp2040nix = inputs.rp2040nix.packages.${system};
 
       # Compile with the main entrypoint
@@ -29,12 +30,15 @@
 
       # Compile with the tests entrypoint
       tests = picoSys:
-        rp2040nix.mkPicoTests {
+        rp2040nix.mkPicoApp {
           name = "tests";
           src = ./.;
+          doCheck = true;
+          cmakeFlags = ["-DTEST=ON"];
           inherit picoSys;
         };
 
+      # Compile the dev environment
       shell = pkgs.callPackage ./shell.nix {inherit rp2040nix;};
     in {
       # Build for rp2040 with `nix build`
@@ -48,6 +52,7 @@
         };
       };
 
+      # Run unit tests as flake checks
       checks = {unitTests = tests "host";};
 
       devShells.default = shell;
