@@ -1,25 +1,30 @@
-{pkgs, ...}: {
+{
+  stdenv,
+  gcc-arm-embedded,
+  picotool,
+  ...
+}: {
   name,
   src,
   buildPhase,
-  checkPhase,
   patchPhase,
+  checkPhase,
   doCheck,
   commonBuildInputs,
   commonCmakeFlags,
   args,
 }:
-pkgs.stdenv.mkDerivation {
+stdenv.mkDerivation {
   inherit name src buildPhase patchPhase checkPhase doCheck;
 
-  nativeBuildInputs = with pkgs;
+  nativeBuildInputs =
     commonBuildInputs
     ++ [
       gcc-arm-embedded
       picotool
     ];
 
-  cmakeFlags = with pkgs;
+  cmakeFlags =
     commonCmakeFlags
     ++ [
       "-DCMAKE_C_COMPILER=${gcc-arm-embedded}/bin/arm-none-eabi-gcc"

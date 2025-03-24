@@ -5,6 +5,9 @@
   ...
 }: let
   rp2040packages = flake.packages.${system};
+
+  mkNativeApp = pkgs.callPackage ./mkNativeApp.nix {};
+  mkRp2040App = pkgs.callPackage ./mkRp2040App.nix {};
 in
   {
     name,
@@ -24,7 +27,7 @@ in
     ];
 
     patchPhase = ''
-      cp ${args.cmakeLists or rp2040packages.rp2040-cmakeLists} ./CMakeLists.txt
+      cp ${args.cmakeLists or builtins.readFile ./CMakeLists.txt} ./CMakeLists.txt
     '';
 
     commonCmakeFlags =
@@ -46,8 +49,8 @@ in
   in
     (
       if picoSys == "host"
-      then rp2040packages.mkNativeApp
-      else rp2040packages.mkRp2040App
+      then mkNativeApp
+      else mkRp2040App
     ) {
       inherit name src buildPhase checkPhase patchPhase doCheck commonBuildInputs commonCmakeFlags args;
     }

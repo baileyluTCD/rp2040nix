@@ -1,7 +1,9 @@
 {
-  pkgs,
-  flake,
-  system,
+  stdenv,
+  SDL2,
+  SDL2_image,
+  alsa-lib,
+  pico-host-sdl,
   ...
 }: {
   name,
@@ -14,10 +16,10 @@
   commonCmakeFlags,
   args,
 }:
-pkgs.stdenv.mkDerivation {
-  inherit name src buildPhase checkPhase doCheck patchPhase;
+stdenv.mkDerivation {
+  inherit name src buildPhase patchPhase checkPhase doCheck;
 
-  nativeBuildInputs = with pkgs;
+  nativeBuildInputs =
     commonBuildInputs
     ++ [
       SDL2
@@ -25,11 +27,11 @@ pkgs.stdenv.mkDerivation {
       alsa-lib.dev
     ];
 
-  cmakeFlags = with pkgs;
+  cmakeFlags =
     commonCmakeFlags
     ++ [
       "-DPICO_PLATFORM=host"
-      "-DPICO_SDK_PRE_LIST_DIRS=${flake.packages.${system}.pico-host-sdl}/lib/pico-host-sdl"
+      "-DPICO_SDK_PRE_LIST_DIRS=${pico-host-sdl}/lib/pico-host-sdl"
       "-DSDL2_MAIN_LIBRARY=${SDL2}/lib/libSDL2.so"
     ];
 
