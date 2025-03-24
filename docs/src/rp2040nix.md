@@ -14,12 +14,12 @@ _rp2040nix_ is an opinionated [Nix](https://nixos.org/) based framework for buil
 
 ### Downsides
 
-- No support for windows at all -> Linux, Mac and WSL only.
-- Nix is fairly obscure compared to the regular, more popular ways.
+- No support for windows at all → Linux, Mac and WSL only.
+- Nix is relatively less compared to the regular, more popular ways, there may be less documentation, etc.
 
 ### Alternatives
 - [rp2040js](https://github.com/wokwi/rp2040js) with precompiled pico binary.
-- [RP2020 PIO Emulator](https://github.com/soundpaint/rp2040pio).
+- [RP2040 PIO Emulator](https://github.com/soundpaint/rp2040pio).
 
 ## Getting Started
 
