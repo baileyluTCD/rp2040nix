@@ -1,0 +1,9 @@
+# Nix
+.direnv
+result
+
+# C
+.ccls-cache
+CMakeFiles
+CMakeCache
+compile_commands.json
