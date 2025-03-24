@@ -23,4 +23,4 @@ _rp2040nix_ is an opinionated [Nix](https://nixos.org/) based framework for buil
 
 ## Getting Started
 
-Ready to get started? Head over to our [setup guide](./getting_started.md)
+Ready to get started? Head over to our [setup guide](https://baileylutcd.github.io/rp2040nix/getting_started.html)
