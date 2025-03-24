@@ -37,10 +37,67 @@
         "type": "github"
       }
     },
+    "pico-extras-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732051222,
+        "narHash": "sha256-Ee3MICjSO6W7j2UEi5Kil2NdvC96vr5DCBKwTHinPMs=",
+        "ref": "refs/heads/master",
+        "rev": "f05d4f7371802440cadd36744789a26944d950ac",
+        "revCount": 51,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/raspberrypi/pico-extras.git"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/raspberrypi/pico-extras.git"
+      }
+    },
+    "pico-host-sdl-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723118654,
+        "narHash": "sha256-6ffSakYP8fT6luxRNiLkcwkP8tBN5nv6zhqc/1GkObk=",
+        "ref": "refs/heads/master",
+        "rev": "ca26aaa91efeb224b23114237bed12ef325ece87",
+        "revCount": 7,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/raspberrypi/pico-host-sdl.git"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/raspberrypi/pico-host-sdl.git"
+      }
+    },
+    "pico-sdk-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1740004325,
+        "narHash": "sha256-wfvsDfzxkKImD7rFbqxD/+53WLebLuRpG91fjiLYDxY=",
+        "ref": "refs/heads/master",
+        "rev": "ee68c78d0afae2b69c03ae1a72bf5cc267a2d94c",
+        "revCount": 1057,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/raspberrypi/pico-sdk.git"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/raspberrypi/pico-sdk.git"
+      }
+    },
     "root": {
       "inputs": {
         "blueprint": "blueprint",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "pico-extras-src": "pico-extras-src",
+        "pico-host-sdl-src": "pico-host-sdl-src",
+        "pico-sdk-src": "pico-sdk-src"
       }
     },
     "systems": {
