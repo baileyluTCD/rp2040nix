@@ -27,7 +27,7 @@ in
     ];
 
     patchPhase = ''
-      cp ${args.cmakeLists or builtins.readFile ./CMakeLists.txt} ./CMakeLists.txt
+      cp ${args.cmakeLists or ./CMakeLists.txt} ./CMakeLists.txt
     '';
 
     commonCmakeFlags =
