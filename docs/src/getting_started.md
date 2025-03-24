@@ -4,6 +4,10 @@
 
 To get started with _rp2040nix_ you must have a [nix](https://nixos.org/) installation with [flakes](https://nixos.wiki/wiki/flakes) enabled.
 
+Already have Nix with flakes? Jump to [Framework Setup](#framework-setup).
+
+Here are a couple of options depending on your system.
+
 ## Fresh Installation on Linux or macOS
 
 The easiest way to get a nix installation with flakes enabled on an existing Linux or macOS system is to use the [Determinate Systems Nix Installer](https://determinate.systems/nix-installer/) which will guide you through the setup process.
@@ -19,9 +23,9 @@ experimental-features = nix-command flakes
 
 And restart your shell session with `exec bash` (or whatever your equivalent is).
 
-## WSL
+## Windows Subsystem For Linux
 
-If you do not already have an existing WSL install and wish to use Nix, it makes sense to grab the full WSL NixOS image and install that instead of layering Nix on top of a distro like Ubuntu.
+If you do not already have an existing [WSL](https://learn.microsoft.com/en-us/windows/wsl/about) install and wish to use Nix, it makes sense to grab the full WSL NixOS image and install that instead of layering Nix on top of a distro like Ubuntu.
 
 First, follow the [NixOS WSL Install Guide](https://nix-community.github.io/NixOS-WSL/).
 
@@ -74,7 +78,7 @@ cd my-amazing-project
 nix flake init -t github:baileyluTCD/rp2040nix
 ```
 
-If all is successfull you can run it with:
+If all is successful you can run it with:
 
 ```bash
 nix run .
