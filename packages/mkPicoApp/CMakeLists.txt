@@ -27,7 +27,7 @@ endif()
 target_include_directories(rp2040nix-app PRIVATE src)
 
 # Link rpi pico libraries needed
-target_link_libraries(rp2040nix-app pico_stdlib pico_extras)
+target_link_libraries(rp2040nix-app pico_stdlib)
 
 # Enable printing over serial
 pico_enable_stdio_usb(rp2040nix-app 0)
