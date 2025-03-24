@@ -12,15 +12,16 @@
   outputs = {
     nixpkgs,
     flake-utils,
-    rp2040nix,
     ...
-  }:
+  } @ inputs:
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {inherit system;};
 
+      rp2040nix = inputs.rp2040nix.lib pkgs;
+
       # Compile with the main entrypoint
       main = picoSys:
-        rp2040nix.lib.mkPicoApp {
+        rp2040nix.mkPicoApp {
           name = "main";
           src = ./.;
           inherit picoSys;
@@ -28,7 +29,7 @@
 
       # Compile with the tests entrypoint
       tests = picoSys:
-        rp2040nix.lib.mkPicoTests {
+        rp2040nix.mkPicoTests {
           name = "tests";
           src = ./.;
           inherit picoSys;

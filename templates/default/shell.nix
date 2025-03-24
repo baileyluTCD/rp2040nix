@@ -2,7 +2,7 @@
   mkShell,
   rp2040nix,
 }: let
-  compileCommandsJson = rp2040nix.lib.mkPicoApp {
+  compileCommandsJson = rp2040nix.mkPicoApp {
     name = "compile_commands.json";
     src = ../.;
     cmakeFlags = ["-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"];

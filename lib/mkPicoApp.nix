@@ -8,12 +8,14 @@
   mkNativeApp,
   mkRp2040App,
   rp2040nix-cmakeLists,
+  defaultCmakeFlags,
+  defaultDoCheck,
 }: {
   name,
   src,
   picoSys ? "rp2040",
-  cmakeFlags ? [],
-  doCheck ? false,
+  cmakeFlags ? defaultCmakeFlags,
+  doCheck ? defaultDoCheck,
   cmakeLists ? rp2040nix-cmakeLists,
   ...
 } @ args: let

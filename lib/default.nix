@@ -1,18 +1,17 @@
-{pkgs, ...}:
-with pkgs; let
+{inputs, flake, ...}: pkgs: let 
   inherit (flake) pico-sdk pico-extras pico-host-sdl rp2040nix-cmakeLists;
-in {
-  mkRp2040App = callPackage ./mkRp2040App.nix {};
-  mkNativeApp = callPackage ./mkNativeApp.nix {inherit pico-host-sdl;};
+in rec {
+  mkRp2040App = pkgs.callPackage ./mkRp2040App.nix {};
+  mkNativeApp = pkgs.callPackage ./mkNativeApp.nix {inherit pico-host-sdl;};
 
-  mkPicoApp = callPackage ./mkPicoApp.nix {
+  mkPicoApp = pkgs.callPackage ./mkPicoApp.nix {
     inherit mkNativeApp mkRp2040App pico-sdk pico-extras rp2040nix-cmakeLists;
 
     defaultCmakeFlags = [];
     defaultDoCheck = false;
   };
 
-  mkPicoTests = callPackage ./mkPicoApp.nix {
+  mkPicoTests = pkgs.callPackage ./mkPicoApp.nix {
     inherit mkNativeApp mkRp2040App pico-sdk pico-extras rp2040nix-cmakeLists;
 
     defaultCmakeFlags = ["-DTEST=on"];
