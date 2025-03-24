@@ -15,7 +15,6 @@ pkgs.stdenv.mkDerivation {
     mdbook build
   '';
 
-  # Output all build file types specified in the assignment
   installPhase = ''
     mkdir -p $out/book
 
