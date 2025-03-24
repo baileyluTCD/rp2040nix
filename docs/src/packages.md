@@ -6,6 +6,7 @@ These include:
 - [Pico Extras](https://github.com/raspberrypi/pico-extras)
 - [Pico Host SDL](https://github.com/raspberrypi/pico-host-sdl)
 - A pinned, regularly updated [Pico SDK](https://github.com/raspberrypi/pico-sdk)
+- This documentation packaged as an HTML bundle
 
 ## Builder Function - `mkPicoApp`
 
