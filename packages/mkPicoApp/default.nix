@@ -6,7 +6,11 @@
 }: let
   rp2040packages = flake.packages.${system};
 
-  mkNativeApp = pkgs.callPackage ./mkNativeApp.nix {};
+  pico-host-sdl = rp2040packages.pico-host-sdl;
+
+  mkNativeApp = pkgs.callPackage ./mkNativeApp.nix {
+    inherit pico-host-sdl;
+  };
   mkRp2040App = pkgs.callPackage ./mkRp2040App.nix {};
 in
   {
