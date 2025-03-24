@@ -17,7 +17,7 @@
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {inherit system;};
 
-      rp2040nix = inputs.rp2040nix.${system};
+      rp2040nix = inputs.rp2040nix.packages.${system};
 
       # Compile with the main entrypoint
       main = picoSys:

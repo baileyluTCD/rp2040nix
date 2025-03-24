@@ -1,4 +1,8 @@
-{inputs, flake, ...}: pkgs: let 
+{
+  inputs,
+  flake,
+  ...
+}: system: let
   inherit (flake) pico-sdk pico-extras pico-host-sdl rp2040nix-cmakeLists;
 in rec {
   mkRp2040App = pkgs.callPackage ./mkRp2040App.nix {};
@@ -18,4 +22,3 @@ in rec {
     defaultDoCheck = true;
   };
 }
-

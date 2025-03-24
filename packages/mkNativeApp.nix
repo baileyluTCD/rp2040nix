@@ -29,7 +29,7 @@ pkgs.stdenv.mkDerivation {
     commonCmakeFlags
     ++ [
       "-DPICO_PLATFORM=host"
-      "-DPICO_SDK_PRE_LIST_DIRS=${flake.outputs.${system}.pico-host-sdl}/lib/pico-host-sdl"
+      "-DPICO_SDK_PRE_LIST_DIRS=${flake.packages.${system}.pico-host-sdl}/lib/pico-host-sdl"
       "-DSDL2_MAIN_LIBRARY=${SDL2}/lib/libSDL2.so"
     ];
 
