@@ -12,7 +12,6 @@ in
     picoSys ? "rp2040",
     cmakeFlags ? [],
     doCheck ? false,
-    cmakeLists ? rp2040packages.rp2040-cmakeLists,
     ...
   } @ args: let
     commonBuildInputs = with pkgs; [
@@ -25,7 +24,7 @@ in
     ];
 
     patchPhase = ''
-      cp ${cmakeLists} ./CMakeLists.txt
+      cp ${args.cmakeLists or rp2040packages.rp2040-cmakeLists} ./CMakeLists.txt
     '';
 
     commonCmakeFlags =
