@@ -4,7 +4,7 @@
   system,
   ...
 }: let
-  rp2040packages = builtins.trace "system pkgs ${builtins.toJSON flake.outputs.packages.${system}}" flake.packages.${system};
+  rp2040packages = flake.packages.${system};
 in
   {
     name,
