@@ -43,7 +43,7 @@
         # Run the app on the host system
         default = {
           type = "app";
-          program = "${main "host"}/bin/main"
+          program = "${main "host"}/bin/main";
         };
       };
 
