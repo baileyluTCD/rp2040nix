@@ -4,6 +4,7 @@
   SDL2_image,
   alsa-lib,
   pico-host-sdl,
+  pico-sdk,
   ...
 }: {
   name,
@@ -33,6 +34,7 @@ stdenv.mkDerivation {
       "-DPICO_PLATFORM=host"
       "-DPICO_SDK_PRE_LIST_DIRS=${pico-host-sdl}/lib/pico-host-sdl"
       "-DSDL2_MAIN_LIBRARY=${SDL2}/lib/libSDL2.so"
+      "-DPICO_HOST_SDK_INCLUDE_DIRS=${pico-sdk}/lib/pico-sdk/src/host"
     ];
 
   # Output all build file types specified in the assignment
