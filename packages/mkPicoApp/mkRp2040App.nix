@@ -40,5 +40,6 @@ stdenv.mkDerivation {
       cp *.elf $out
       cp *.uf2 $out
       cp *.dis $out
+      cp *.hex $out
     '';
 }
