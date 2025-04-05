@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
-    rp2040nix.url = "github:baileylutcd/rp2040nix/master";
+    rp2040nix.url = "github:baileylutcd/rp2040nix";
     rp2040nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 

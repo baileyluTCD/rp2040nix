@@ -1,0 +1,178 @@
+{
+  "nodes": {
+    "blueprint": {
+      "inputs": {
+        "nixpkgs": [
+          "rp2040nix",
+          "nixpkgs"
+        ],
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1742810182,
+        "narHash": "sha256-K0VpsMJHQcIfOXoYW/IDa5HNhLp02XEfUt5fCjmRQBA=",
+        "owner": "numtide",
+        "repo": "blueprint",
+        "rev": "5663edeaef8952926ce96d34a3c40d240717efcf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "blueprint",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1743583204,
+        "narHash": "sha256-F7n4+KOIfWrwoQjXrL2wD9RhFYLs2/GGe/MQY1sSdlE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2c8d3f48d33929642c1c12cd243df4cc7d2ce434",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "pico-extras-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732051222,
+        "narHash": "sha256-Ee3MICjSO6W7j2UEi5Kil2NdvC96vr5DCBKwTHinPMs=",
+        "ref": "refs/heads/master",
+        "rev": "f05d4f7371802440cadd36744789a26944d950ac",
+        "revCount": 51,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/raspberrypi/pico-extras.git"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/raspberrypi/pico-extras.git"
+      }
+    },
+    "pico-host-sdl-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723118654,
+        "narHash": "sha256-6ffSakYP8fT6luxRNiLkcwkP8tBN5nv6zhqc/1GkObk=",
+        "ref": "refs/heads/master",
+        "rev": "ca26aaa91efeb224b23114237bed12ef325ece87",
+        "revCount": 7,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/raspberrypi/pico-host-sdl.git"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/raspberrypi/pico-host-sdl.git"
+      }
+    },
+    "pico-sdk-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1740004325,
+        "narHash": "sha256-wfvsDfzxkKImD7rFbqxD/+53WLebLuRpG91fjiLYDxY=",
+        "ref": "refs/heads/master",
+        "rev": "ee68c78d0afae2b69c03ae1a72bf5cc267a2d94c",
+        "revCount": 1057,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/raspberrypi/pico-sdk.git"
+      },
+      "original": {
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/raspberrypi/pico-sdk.git"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs",
+        "rp2040nix": "rp2040nix"
+      }
+    },
+    "rp2040nix": {
+      "inputs": {
+        "blueprint": "blueprint",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "pico-extras-src": "pico-extras-src",
+        "pico-host-sdl-src": "pico-host-sdl-src",
+        "pico-sdk-src": "pico-sdk-src"
+      },
+      "locked": {
+        "lastModified": 1743891130,
+        "narHash": "sha256-nSVL3RgvtX3I8f5s9S+SpZJTxpYxNHDKjJ1u7Iz9HJg=",
+        "owner": "baileylutcd",
+        "repo": "rp2040nix",
+        "rev": "cf3010937d220fddd83eede8fde0b524794600cd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "baileylutcd",
+        "ref": "implement-proper-asm-linking",
+        "repo": "rp2040nix",
+        "type": "github"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_2": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

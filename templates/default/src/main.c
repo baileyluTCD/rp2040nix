@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include "pico/stdlib.h"
 #include "pico/stdio.h"
+#include "my_lib_file.h"
 
 /**
  * rp2040nix project main entry point.
@@ -13,7 +14,7 @@
 int main() {
    stdio_init_all();
 
-   printf("Hello, World!");
+   say_hi();
 
    return 0;
 }
