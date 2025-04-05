@@ -28,9 +28,13 @@ else()
   add_executable(rp2040nix-app ${MAIN_ENTRY} ${CORE_SOURCES})
 endif()
 
+foreach(pio-header ${RP2040NIX_PIO})
+  pico_generate_pio_header(rp2040nix-app pio-header)
+endforeach()
+
 # Link header files
 target_include_directories(rp2040nix-app PRIVATE src)
-target_link_libraries(rp2040nix-app pico_stdlib pico_multicore)
+target_link_libraries(rp2040nix-app pico_stdlib ${RP2040NIX_LIBRARIES})
 
 pico_enable_stdio_usb(rp2040nix-app 0)
 pico_enable_stdio_uart(rp2040nix-app 1)

@@ -18,6 +18,8 @@ in
     src,
     picoSys ? "rp2040",
     cmakeFlags ? [],
+    pioHeaders ? [],
+    extraPicoLibraries ? [],
     doCheck ? false,
     ...
   } @ args: let
@@ -34,11 +36,15 @@ in
       cp ${args.cmakeLists or ./CMakeLists.txt} ./CMakeLists.txt
     '';
 
+    toCmakeList = pkgs.lib.concatStringsSep ";";
+
     commonCmakeFlags =
       [
         "-G Ninja"
         "-DPICO_SDK_PATH=${rp2040packages.pico-sdk}/lib/pico-sdk"
         "-DPICO_EXTRAS_PATH=${rp2040packages.pico-extras}/lib/pico-extras"
+        "-DRP2040NIX_LIBRARIES=${toCmakeList extraPicoLibraries}"
+        "-DRP2040NIX_PIO=${toCmakeList pioHeaders}"
       ]
       ++ cmakeFlags;
 

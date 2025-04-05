@@ -27,6 +27,10 @@ Currently, here are the supported arguments for `mkPicoApp`.
     cmakeFlags, 
     # Should the checkPhase be ran for this package. Default - false
     doCheck, 
+    # A list of file paths to PIO headers which should be included
+    pioHeaders,
+    # Extra pico libraries to link against
+    extraPicoLibraries,
     # The cmake lists file to inject into the source for compilation - See the default at https://github.com/baileyluTCD/rp2040nix/blob/master/packages/mkPicoApp/CMakeLists.txt
     cmakeLists,
   } 
