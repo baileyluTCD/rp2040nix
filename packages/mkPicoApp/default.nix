@@ -18,7 +18,6 @@ in
     src,
     picoSys ? "rp2040",
     cmakeFlags ? [],
-    pioHeaders ? [],
     extraPicoLibraries ? [],
     doCheck ? false,
     ...
@@ -44,7 +43,6 @@ in
         "-DPICO_SDK_PATH=${rp2040packages.pico-sdk}/lib/pico-sdk"
         "-DPICO_EXTRAS_PATH=${rp2040packages.pico-extras}/lib/pico-extras"
         "-DRP2040NIX_LIBRARIES=${toCmakeList extraPicoLibraries}"
-        "-DRP2040NIX_PIO=${toCmakeList pioHeaders}"
       ]
       ++ cmakeFlags;
 

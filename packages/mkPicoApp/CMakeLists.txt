@@ -42,13 +42,25 @@ else()
   add_executable(rp2040nix-app ${MAIN_ENTRY} ${CORE_SOURCES})
 endif()
 
-rp2040nix_log("Adding pio headers..." ${RP2040NIX_PIO})
-foreach(pio-header ${RP2040NIX_PIO})
-  pico_generate_pio_header(rp2040nix-app ${pio-header})
+rp2040nix_log("Finding PIO Sources...")
+file(
+  GLOB_RECURSE PIO_SOURCES
+  LIST_DIRECTORIES false
+  CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.pio")
+
+rp2040nix_log("Using pio sources..." ${PIO_SOURCES})
+
+foreach(PIO_SOURCE ${PIO_SOURCES})
+  pico_generate_pio_header(rp2040nix-app ${PIO_SOURCE})
 endforeach()
 
 # Link header files
 target_include_directories(rp2040nix-app PRIVATE src)
+
+list(LENGTH PIO_SOURCES pio_sources_length)
+if(NOT pio_sources_length EQUAL 0)
+  list(APPEND RP2040NIX_LIBRARIES hardware_pio)
+endif()
 
 rp2040nix_log("Linking libraries..." ${RP2040NIX_LIBRARIES})
 target_link_libraries(rp2040nix-app pico_stdlib ${RP2040NIX_LIBRARIES})
