@@ -8,7 +8,7 @@ _rp2040nix_ is an opinionated [Nix](https://nixos.org/) based framework for buil
 - Declarative Config.
 - Far more simple setup compared to [pico-sdk](https://github.com/raspberrypi/pico-sdk) and [cmake](https://cmake.org/) alone.
 - Built in cross compling support - develop applications on your native hardware and the pico itself.
-- Unit test support via nix flake checks.
+- Unit test support.
 - Add extra dependencies and share them with your team with ease.
 - Built in editor support via `compile_commands.json`.
 

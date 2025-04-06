@@ -1,6 +1,7 @@
 {pkgs, ...}: let
   version = "1.0.2";
 
+  # Source the latest rp2040js version
   src = pkgs.fetchFromGitHub {
     owner = "wokwi";
     repo = "rp2040js";
@@ -18,11 +19,13 @@ in
 
     inherit src version;
 
+    # RP2040js must be started inside it's source folder to function correctly
     installPhase = ''
       mkdir -p $out/{lib,bin}
 
       cp -R ./* $out/lib/
 
+      # Run `npm start`, pass args and hide warnings
       makeWrapper ${pkgs.bun}/bin/bun $out/bin/rp2040js \
         --chdir "$out/lib" \
         --add-flags "start" \

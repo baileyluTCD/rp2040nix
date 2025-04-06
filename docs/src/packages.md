@@ -18,17 +18,11 @@ Currently, here are the supported arguments for `mkPicoApp`.
 ```nix
   {
     # The name of the package you wish to build
-    name, 
+    pname, 
     # The package's source code directory
     src, 
-    # The system you want to compile for - avalible options - "host", "rp2040". Default: "rp2040"
-    picoSys, 
     # Any extra flags you want to append to `cmake`. Optional
-    cmakeFlags, 
-    # Should the checkPhase be ran for this package. Default - false
-    doCheck, 
-    # A list of file paths to PIO headers which should be included
-    pioHeaders,
+    extraCmakeFlags, 
     # Extra pico libraries to link against
     extraPicoLibraries,
     # The cmake lists file to inject into the source for compilation - See the default at https://github.com/baileyluTCD/rp2040nix/blob/master/packages/mkPicoApp/CMakeLists.txt
@@ -41,19 +35,16 @@ Currently, here are the supported arguments for `mkPicoApp`.
 ```nix
   # Compile an application's main.c and run it locally
   rp2040nix.mkPicoApp {
-    name = "main";
+    pname = "main";
     src = ./.;
-    picoSys = "host";
   };
 ```
 
 ```nix
   # Compile an application's test.c with TEST defined for the rp2040 hardware
   rp2040nix.mkPicoApp {
-    name = "tests";
+    pname = "tests";
     src = ./.;
-    doCheck = true;
-    cmakeFlags = ["-DTEST=ON"];
-    picoSys = "rp2040";
+    extraCmakeFlags = ["-DTEST=ON"];
   };
 ```
