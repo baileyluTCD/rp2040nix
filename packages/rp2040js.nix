@@ -13,7 +13,7 @@ in
 
     nativeBuildInputs = with pkgs; [
       nodePackages.typescript
-      makeBinaryWrapper
+      makeWrapper
     ];
 
     inherit src version;
@@ -25,7 +25,8 @@ in
 
       makeWrapper ${pkgs.bun}/bin/bun $out/bin/rp2040js \
         --chdir "$out/lib" \
-        --add-flags "start"
+        --add-flags "start" \
+        --append-flags "2>&1 | grep -vF \"[CortexM0Core] SEV\""
     '';
 
     npmDepsHash = "sha256-RX3smONJ25JSV8UONci8vd03e6cCyb7jP8JOmEyNB+E=";
