@@ -11,14 +11,13 @@ in
     src,
     cmakeFlags ? [],
     extraPicoLibraries ? [],
-    doCheck ? false,
     cmakeLists ? ./CMakeLists.txt,
     ...
   } @ args: let
     toCmakeList = pkgs.lib.concatStringsSep ";";
   in
     pkgs.stdenv.mkDerivation ({
-        inherit pname src doCheck;
+        inherit pname src;
 
         nativeBuildInputs = with pkgs; [
           cmake
@@ -29,6 +28,7 @@ in
           rp2040packages.pico-extras
           gcc-arm-embedded
           picotool
+          makeWrapper
         ];
 
         # Default cmake flags
@@ -63,12 +63,8 @@ in
 
           cp *.{elf,uf2,dis,hex} $out/lib
 
-          cat > $out/bin/${pname} <<EOF
-          #!${pkgs.runtimeShell}
-          ${rp2040packages.rp2040js}/bin/rp2040js --image $out/lib/${pname}.uf2
-          EOF
-
-          chmod +x $out/bin/${pname}
+          makeWrapper ${rp2040packages.rp2040js}/bin/rp2040js $out/bin/${pname} \
+            --add-flags "--image $out/lib/${pname}.uf2"
         '';
       }
       // args)

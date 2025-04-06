@@ -69,6 +69,4 @@ endif()
 rp2040nix_log("Linking libraries..." ${RP2040NIX_LIBRARIES})
 target_link_libraries(${RP2040NIX_NAME} pico_stdlib ${RP2040NIX_LIBRARIES})
 
-pico_enable_stdio_usb(${RP2040NIX_NAME} 0)
-pico_enable_stdio_uart(${RP2040NIX_NAME} 1)
 pico_add_extra_outputs(${RP2040NIX_NAME})

@@ -11,8 +11,9 @@ in
   pkgs.buildNpmPackage {
     pname = "rp2040js";
 
-    nativeBuildInputs = [
-      pkgs.nodePackages.typescript
+    nativeBuildInputs = with pkgs; [
+      nodePackages.typescript
+      makeBinaryWrapper
     ];
 
     inherit src version;
@@ -22,14 +23,9 @@ in
 
       cp -R ./* $out/lib/
 
-      cat > $out/bin/rp2040js <<EOF
-      #!${pkgs.runtimeShell}
-      cd $out/lib
-
-      ${pkgs.bun}/bin/bun start -- "\$@" 2>&1 | grep -v -F '[CortexM0Core] SEV'
-      EOF
-
-      chmod +x $out/bin/rp2040js
+      makeWrapper ${pkgs.bun}/bin/bun $out/bin/rp2040js \
+        --chdir "$out/lib" \
+        --add-flags "start"
     '';
 
     npmDepsHash = "sha256-RX3smONJ25JSV8UONci8vd03e6cCyb7jP8JOmEyNB+E=";
