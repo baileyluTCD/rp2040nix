@@ -7,7 +7,7 @@ To build the project for the pico, run `nix build .` in the root directory.
 All created (`*.elf`, `*.uf2` and `*.dis`) files will be output in `./result`.
 
 ## Running
-Thanks to [pico sdl host](https://github.com/raspberrypi/pico-host-sdl) we can compile the pico code to run natively on your system without having hardware or an emulator with some compiler tricks.
+Thanks to [rp2040js](https://github.com/wokwi/rp2040js) we can compile the pico code and run on your system without having the actual hardware present.
 
 Run the project with `nix run .`.
 

@@ -31,7 +31,6 @@ in
           makeWrapper
         ];
 
-        # Default cmake flags
         cmakeFlags =
           [
             "-G Ninja"
@@ -44,6 +43,7 @@ in
           ]
           ++ extraCmakeFlags;
 
+        # Install the framework default cmake lists
         patchPhase = ''
           cp ${cmakeLists} ./CMakeLists.txt
         '';
