@@ -20,40 +20,30 @@
       # Access the rp2040nix packages bundle
       rp2040nix = inputs.rp2040nix.packages.${system};
 
+      version = "0.1.0";
+      src = ./.;
+
       # Compile with the main entrypoint
-      main = picoSys:
-        rp2040nix.mkPicoApp {
-          name = "main";
-          src = ./.;
-          inherit picoSys;
-        };
+      main = rp2040nix.mkPicoApp {
+        pname = "main";
+        inherit version src;
+      };
 
       # Compile with the tests entrypoint
-      tests = picoSys:
-        rp2040nix.mkPicoApp {
-          name = "tests";
-          src = ./.;
-          doCheck = true;
-          cmakeFlags = ["-DTEST=ON"];
-          inherit picoSys;
-        };
+      test = rp2040nix.mkPicoApp {
+        pname = "test";
+        extraCmakeFlags = ["-DTEST=ON"];
+        inherit version src;
+      };
 
       # Compile the dev environment
       shell = pkgs.callPackage ./shell.nix {inherit rp2040nix;};
     in {
       # Build for rp2040 with `nix build`
-      packages.default = main "rp2040";
-
-      apps = {
-        # Run the app on the host system
-        default = {
-          type = "app";
-          program = "${main "host"}/bin/main";
-        };
+      packages = {
+        default = main;
+        test = test;
       };
-
-      # Run unit tests as flake checks
-      checks = {unitTests = tests "host";};
 
       devShells.default = shell;
     });

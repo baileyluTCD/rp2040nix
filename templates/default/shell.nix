@@ -3,9 +3,10 @@
   rp2040nix,
 }: let
   compileCommandsJson = rp2040nix.mkPicoApp {
-    name = "compile_commands.json";
+    pname = "compile_commands.json";
     src = ./.;
-    cmakeFlags = ["-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"];
+    version = "1.0.0";
+    extraCmakeFlags = ["-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"];
     installPhase = ''
       cp compile_commands.json $out
     '';

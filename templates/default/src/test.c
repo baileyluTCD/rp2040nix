@@ -13,7 +13,7 @@
 /**
  * Test runner function
  *
- * Try making a bad assertion i.e. `assert(0 == 1)` and view the output of `nix flake check`.
+ * Try making a bad assertion i.e. `assert(0 == 1)` and view the output of `nix run .#test`.
  *
 */
 void run_tests() {
@@ -23,7 +23,7 @@ void run_tests() {
 /**
  * rp2040nix project test entry point.
  *
- * Try it out with `nix flake check`. If all goes well no output should be produced.
+ * Try it out with `nix run .#test`. If all goes well no output should be produced.
  *
 */
 int main() {

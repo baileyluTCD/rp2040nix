@@ -128,16 +128,15 @@
         "pico-sdk-src": "pico-sdk-src"
       },
       "locked": {
-        "lastModified": 1743891130,
-        "narHash": "sha256-nSVL3RgvtX3I8f5s9S+SpZJTxpYxNHDKjJ1u7Iz9HJg=",
+        "lastModified": 1743945191,
+        "narHash": "sha256-cWqT3kbBLHDzN1sp12ymYNsA4a3di/49ikQGj1jbrL4=",
         "owner": "baileylutcd",
         "repo": "rp2040nix",
-        "rev": "cf3010937d220fddd83eede8fde0b524794600cd",
+        "rev": "94e26a9f95a4fbf5a3f34298c002358c4e79ab42",
         "type": "github"
       },
       "original": {
         "owner": "baileylutcd",
-        "ref": "implement-proper-asm-linking",
         "repo": "rp2040nix",
         "type": "github"
       }
