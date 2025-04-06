@@ -12,7 +12,7 @@ function(rp2040nix_log)
   message("${COLOR_LIGHTBLUE}rp2040nix: ${FULL_MSG}${COLOR_RESET}")
 endfunction()
 
-rp2040nix_log("Compiling `${RP2040NIX_NAME}`...")
+rp2040nix_log("Compiling `${RP2040NIX_NAME}`")
 project(${RP2040NIX_NAME})
 
 pico_sdk_init()
@@ -49,8 +49,6 @@ file(
   LIST_DIRECTORIES false
   CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.pio")
 
-rp2040nix_log("Using pio sources..." ${PIO_SOURCES})
-
 # Link PIO sources
 foreach(PIO_SOURCE ${PIO_SOURCES})
   pico_generate_pio_header(${RP2040NIX_NAME} ${PIO_SOURCE})
@@ -62,6 +60,7 @@ target_include_directories(${RP2040NIX_NAME} PRIVATE src)
 # Link hardware_pio library automatically if pio sources are included
 list(LENGTH PIO_SOURCES pio_sources_length)
 if(NOT pio_sources_length EQUAL 0)
+  rp2040nix_log("Using pio sources..." ${PIO_SOURCES})
   list(APPEND RP2040NIX_LIBRARIES hardware_pio)
 endif()
 

@@ -9,7 +9,7 @@ in
   {
     pname,
     src,
-    cmakeFlags ? [],
+    extraCmakeFlags ? [],
     extraPicoLibraries ? [],
     cmakeLists ? ./CMakeLists.txt,
     ...
@@ -42,7 +42,7 @@ in
             "-DRP2040NIX_LIBRARIES=${toCmakeList extraPicoLibraries}"
             "-DRP2040NIX_NAME=${pname}"
           ]
-          ++ cmakeFlags;
+          ++ extraCmakeFlags;
 
         patchPhase = ''
           cp ${cmakeLists} ./CMakeLists.txt
