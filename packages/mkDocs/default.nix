@@ -10,7 +10,7 @@
     owner = "jothepro";
     repo = "doxygen-awesome-css";
     tag = "v2.3.4";
-    hash = "sha256-HrFNbnpG0ttOg0xbC+WLhC77KmvkNjtVNk1QUD+JgYY=";
+    hash = "sha256-g4Smy7BJ//4wQigAnx5fJQe5QxoLc6Aopm8O7S2lVkY=";
   };
 in
   pkgs.stdenv.mkDerivation ({
