@@ -3,8 +3,8 @@
 _rp2040nix_ exposes a handful of packages which may be useful in a general setting for developing with the rp2040 using nix, some of which aren't yet packaged in [nixpkgs](https://github.com/NixOS/nixpkgs).
 
 These include:
+- [rp2040js](https://github.com/wokwi/rp2040js)
 - [Pico Extras](https://github.com/raspberrypi/pico-extras)
-- [Pico Host SDL](https://github.com/raspberrypi/pico-host-sdl)
 - A pinned, regularly updated [Pico SDK](https://github.com/raspberrypi/pico-sdk)
 - This documentation packaged as an HTML bundle
 
@@ -77,7 +77,7 @@ Currently, here are the supported arguments for `mkDocs`.
 
 ```nix
   # Compile an application's documentation
-  rp2040nix.mkPicoApp {
+  rp2040nix.mkDocs {
     pname = "my-awesome-docs";
     version = "1.2.4";
     src = ./.;
