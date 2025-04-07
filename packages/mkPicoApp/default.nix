@@ -63,5 +63,7 @@ in
           makeWrapper ${rp2040packages.rp2040js}/bin/rp2040js $out/bin/${pname} \
             --add-flags "--image $out/lib/${pname}.uf2"
         '';
+
+        meta.mainProgram = pname;
       }
       // args)

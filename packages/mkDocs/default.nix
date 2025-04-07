@@ -32,10 +32,12 @@ in
       installPhase = ''
         mkdir -p $out/{bin,lib}
 
-        cp -R ./doxygen $out/lib
+        cp -R ./doxygen/* $out/lib
 
-        makeWrapper ${pkgs.httplz}/bin/httplz $out/bin/serve \
+        makeWrapper ${pkgs.httplz}/bin/httplz $out/bin/${pname} \
           --chdir "$out/lib/html"
       '';
+
+      meta.mainProgram = pname;
     }
     // args)
