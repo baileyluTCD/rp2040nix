@@ -21,7 +21,11 @@ in
         makeWrapper
       ];
 
-      env.DOXYGEN_AWESOME_CSS = "${doxygen-awesome-css}/doxygen-awesome.css";
+      env = {
+        DOXYGEN_PROJECT_NAME = pname;
+        DOXYGEN_PROJECT_NUMBER = version;
+        DOXYGEN_AWESOME_CSS = "${doxygen-awesome-css}/doxygen-awesome.css";
+      };
 
       # Produce doxygen output files (html, latex, etc)
       buildPhase = ''
