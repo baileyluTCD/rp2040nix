@@ -29,6 +29,12 @@
         inherit version src;
       };
 
+      # Compile documentation
+      docs = rp2040nix.mkDocs {
+        pname = "docs";
+        inherit version src;
+      };
+
       # Compile with the tests entrypoint
       test = rp2040nix.mkPicoApp {
         pname = "test";
@@ -42,7 +48,7 @@
       # Build for rp2040 with `nix build`
       packages = {
         default = main;
-        test = test;
+        inherit test docs;
       };
 
       devShells.default = shell;

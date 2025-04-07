@@ -9,11 +9,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1742810182,
-        "narHash": "sha256-K0VpsMJHQcIfOXoYW/IDa5HNhLp02XEfUt5fCjmRQBA=",
+        "lastModified": 1743008896,
+        "narHash": "sha256-mU0WYwrgN8Sus4ktBsSzkvs0++vAKrhNE0A0vWo8AzY=",
         "owner": "numtide",
         "repo": "blueprint",
-        "rev": "5663edeaef8952926ce96d34a3c40d240717efcf",
+        "rev": "7ae2142c8b5a47bed6d403fdd5f5a1215961e10c",
         "type": "github"
       },
       "original": {
@@ -42,11 +42,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1743583204,
-        "narHash": "sha256-F7n4+KOIfWrwoQjXrL2wD9RhFYLs2/GGe/MQY1sSdlE=",
+        "lastModified": 1743827369,
+        "narHash": "sha256-rpqepOZ8Eo1zg+KJeWoq1HAOgoMCDloqv5r2EAa9TSA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2c8d3f48d33929642c1c12cd243df4cc7d2ce434",
+        "rev": "42a1c966be226125b48c384171c44c651c236c22",
         "type": "github"
       },
       "original": {
@@ -59,11 +59,11 @@
     "pico-extras-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1732051222,
-        "narHash": "sha256-Ee3MICjSO6W7j2UEi5Kil2NdvC96vr5DCBKwTHinPMs=",
+        "lastModified": 1743198571,
+        "narHash": "sha256-2R5RBxyWlaTJYwSfYkwmPYj60xXFoiTn/PgpXOYHmU4=",
         "ref": "refs/heads/master",
-        "rev": "f05d4f7371802440cadd36744789a26944d950ac",
-        "revCount": 51,
+        "rev": "4ccfef6fe068bbae8106d0d1f072c7f997472040",
+        "revCount": 52,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/raspberrypi/pico-extras.git"
@@ -128,11 +128,11 @@
         "pico-sdk-src": "pico-sdk-src"
       },
       "locked": {
-        "lastModified": 1743945191,
-        "narHash": "sha256-cWqT3kbBLHDzN1sp12ymYNsA4a3di/49ikQGj1jbrL4=",
+        "lastModified": 1744042000,
+        "narHash": "sha256-vwk4gdK90ssBl9yAfHt0Oi3CMLn56fnzRZX8/XTZAyc=",
         "owner": "baileylutcd",
         "repo": "rp2040nix",
-        "rev": "94e26a9f95a4fbf5a3f34298c002358c4e79ab42",
+        "rev": "9d59ac960888efb44050c77ed26cf3e5ca5a89b2",
         "type": "github"
       },
       "original": {
