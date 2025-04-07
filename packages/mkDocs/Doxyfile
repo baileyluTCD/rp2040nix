@@ -1,0 +1,10 @@
+RECURSIVE              = YES
+INPUT                  = ./src
+FILE_PATTERNS          = *.c *.h *.S *.s
+EXTRACT_ALL            = YES
+GENERATE_TREEVIEW      = YES
+DISABLE_INDEX          = NO
+FULL_SIDEBAR           = NO
+HTML_EXTRA_STYLESHEET  = $(DOXYGEN_AWESOME_CSS)
+HTML_COLORSTYLE        = LIGHT
+OUTPUT_DIRECTORY       = ./doxygen
