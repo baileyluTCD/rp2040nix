@@ -38,6 +38,7 @@ Currently, here are the supported arguments for `mkPicoApp`.
   # Compile an application's main.c and run it locally
   rp2040nix.mkPicoApp {
     pname = "main";
+    version = "1.2.4";
     src = ./.;
   };
 ```
@@ -46,7 +47,39 @@ Currently, here are the supported arguments for `mkPicoApp`.
   # Compile an application's test.c with TEST defined for the rp2040 hardware
   rp2040nix.mkPicoApp {
     pname = "tests";
+    version = "1.2.4";
     src = ./.;
     extraCmakeFlags = ["-DTEST=ON"];
+  };
+```
+
+## Builder Function - `mkDocs`
+
+_rp2040nix_ has built in support for [doxygen](https://www.doxygen.nl/index.html) generated documentation with a nice styling courtesy of [doxygen awesome](https://jothepro.github.io/doxygen-awesome-css/).
+
+### Interface
+Currently, here are the supported arguments for `mkDocs`.
+
+```nix
+  {
+    # The name of the package you wish to build
+    pname, 
+    # The version of the package to build
+    version,
+    # The package's source code directory
+    src, 
+    # The Doxyfile to inject into the source for compilation - See the default at https://github.com/baileyluTCD/rp2040nix/blob/master/packages/mkDocs/Doxyfile
+    doxyfile,
+  } 
+```
+
+### Examples
+
+```nix
+  # Compile an application's documentation
+  rp2040nix.mkPicoApp {
+    pname = "my-awesome-docs";
+    version = "1.2.4";
+    src = ./.;
   };
 ```
