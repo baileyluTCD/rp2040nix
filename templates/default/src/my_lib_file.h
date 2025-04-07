@@ -4,4 +4,3 @@
 void say_hi();
 
 #endif
-

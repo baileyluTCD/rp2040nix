@@ -9,48 +9,53 @@
     rp2040nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {
-    nixpkgs,
-    flake-utils,
-    ...
-  } @ inputs:
-    flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs {inherit system;};
+  outputs =
+    {
+      nixpkgs,
+      flake-utils,
+      ...
+    }@inputs:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs { inherit system; };
 
-      # Access the rp2040nix packages bundle
-      rp2040nix = inputs.rp2040nix.packages.${system};
+        # Access the rp2040nix packages bundle
+        rp2040nix = inputs.rp2040nix.packages.${system};
 
-      version = "0.1.0";
-      src = ./.;
+        version = "0.1.0";
+        src = ./.;
 
-      # Compile with the main entrypoint
-      main = rp2040nix.mkPicoApp {
-        pname = "main";
-        inherit version src;
-      };
+        # Compile with the main entrypoint
+        main = rp2040nix.mkPicoApp {
+          pname = "main";
+          inherit version src;
+        };
 
-      # Compile documentation
-      docs = rp2040nix.mkDocs {
-        pname = "docs";
-        inherit version src;
-      };
+        # Compile documentation
+        docs = rp2040nix.mkDocs {
+          pname = "docs";
+          inherit version src;
+        };
 
-      # Compile with the tests entrypoint
-      test = rp2040nix.mkPicoApp {
-        pname = "test";
-        extraCmakeFlags = ["-DTEST=ON"];
-        inherit version src;
-      };
+        # Compile with the tests entrypoint
+        test = rp2040nix.mkPicoApp {
+          pname = "test";
+          extraCmakeFlags = [ "-DTEST=ON" ];
+          inherit version src;
+        };
 
-      # Compile the dev environment
-      shell = pkgs.callPackage ./shell.nix {inherit rp2040nix;};
-    in {
-      # Build for rp2040 with `nix build`
-      packages = {
-        default = main;
-        inherit test docs;
-      };
+        # Compile the dev environment
+        shell = pkgs.callPackage ./shell.nix { inherit rp2040nix; };
+      in
+      {
+        # Build for rp2040 with `nix build`
+        packages = {
+          default = main;
+          inherit test docs;
+        };
 
-      devShells.default = shell;
-    });
+        devShells.default = shell;
+      }
+    );
 }

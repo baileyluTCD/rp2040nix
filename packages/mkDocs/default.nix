@@ -1,10 +1,12 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   pname,
   version,
   src,
   doxyfile ? ./Doxyfile,
   ...
-} @ args: let
+}@args:
+let
   # Fetch nicer css styles
   doxygen-awesome-css = pkgs.fetchFromGitHub {
     owner = "jothepro";
@@ -13,35 +15,37 @@
     hash = "sha256-g4Smy7BJ//4wQigAnx5fJQe5QxoLc6Aopm8O7S2lVkY=";
   };
 in
-  pkgs.stdenv.mkDerivation ({
-      inherit pname src version;
+pkgs.stdenv.mkDerivation (
+  {
+    inherit pname src version;
 
-      nativeBuildInputs = with pkgs; [
-        doxygen
-        makeWrapper
-      ];
+    nativeBuildInputs = with pkgs; [
+      doxygen
+      makeWrapper
+    ];
 
-      env = {
-        DOXYGEN_PROJECT_NAME = pname;
-        DOXYGEN_PROJECT_NUMBER = version;
-        DOXYGEN_AWESOME_CSS = "${doxygen-awesome-css}/doxygen-awesome.css";
-      };
+    env = {
+      DOXYGEN_PROJECT_NAME = pname;
+      DOXYGEN_PROJECT_NUMBER = version;
+      DOXYGEN_AWESOME_CSS = "${doxygen-awesome-css}/doxygen-awesome.css";
+    };
 
-      # Produce doxygen output files (html, latex, etc)
-      buildPhase = ''
-        doxygen ${doxyfile}
-      '';
+    # Produce doxygen output files (html, latex, etc)
+    buildPhase = ''
+      doxygen ${doxyfile}
+    '';
 
-      # Put raw outputs in lib and create a http server binary in bin
-      installPhase = ''
-        mkdir -p $out/{bin,lib}
+    # Put raw outputs in lib and create a http server binary in bin
+    installPhase = ''
+      mkdir -p $out/{bin,lib}
 
-        cp -R ./doxygen/* $out/lib
+      cp -R ./doxygen/* $out/lib
 
-        makeWrapper ${pkgs.httplz}/bin/httplz $out/bin/${pname} \
-          --chdir "$out/lib/html"
-      '';
+      makeWrapper ${pkgs.httplz}/bin/httplz $out/bin/${pname} \
+        --chdir "$out/lib/html"
+    '';
 
-      meta.mainProgram = pname;
-    }
-    // args)
+    meta.mainProgram = pname;
+  }
+  // args
+)
