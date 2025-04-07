@@ -9,6 +9,7 @@ in
   {
     pname,
     src,
+    version,
     extraCmakeFlags ? [],
     extraPicoLibraries ? [],
     cmakeLists ? ./CMakeLists.txt,
@@ -17,7 +18,7 @@ in
     toCmakeList = pkgs.lib.concatStringsSep ";";
   in
     pkgs.stdenv.mkDerivation ({
-        inherit pname src;
+        inherit pname src version;
 
         nativeBuildInputs = with pkgs; [
           cmake

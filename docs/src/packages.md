@@ -19,6 +19,8 @@ Currently, here are the supported arguments for `mkPicoApp`.
   {
     # The name of the package you wish to build
     pname, 
+    # The version of the package to build
+    version,
     # The package's source code directory
     src, 
     # Any extra flags you want to append to `cmake`. Optional
