@@ -14,7 +14,10 @@ let
       cmake-format.enable = true;
       clang-format.enable = true;
       shfmt.enable = true;
-      asmfmt.enable = true;
+      asmfmt = {
+        enable = true;
+        includes = [ "*.S" ];
+      };
     };
   };
 
@@ -27,20 +30,7 @@ let
         ];
       }
       ''
-        export HOME=$NIX_BUILD_TOP/home
-
-        # keep timestamps so that treefmt is able to detect mtime changes
-        cp --no-preserve=mode --preserve=timestamps -r ${flake} source
-        cd source
-        git init --quiet
-        git add .
-        treefmt --no-cache
-        if ! git diff --exit-code; then
-          echo "-------------------------------"
-          echo "aborting due to above changes ^"
-          exit 1
-        fi
-        touch $out
+        treefmt --fail-on-change
       '';
 in
 formatter
