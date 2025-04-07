@@ -7,6 +7,8 @@
     blueprint.url = "github:numtide/blueprint";
     blueprint.inputs.nixpkgs.follows = "nixpkgs";
 
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+
     pico-sdk-src = {
       url = "https://github.com/raspberrypi/pico-sdk.git";
       flake = false;
@@ -30,5 +32,5 @@
   };
 
   # Load the blueprint
-  outputs = inputs: inputs.blueprint {inherit inputs;};
+  outputs = inputs: inputs.blueprint { inherit inputs; };
 }
